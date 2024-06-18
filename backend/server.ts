@@ -5,6 +5,8 @@ import session from "express-session";
 import cors from "cors";
 
 import authRoutes from "./routes/authRoutes";
+import messageRoutes from "./routes/messagesRoutes";
+
 import mongoose from "mongoose";
 import verifyToken from "./middleware/verifyToken";
 
@@ -34,6 +36,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/auth", authRoutes);
+app.use("/messages", messageRoutes);
 
 app.get("/test", verifyToken);
 

@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        "c-100": "#7FBBF1",
-        "c-200": "#36322C",
-        "c-300": "#A8AB9D",
+        "c-100": "black",
+        "c-200": "white",
+        "c-300": "gray",
       },
       animation: {
         levitate: "levitate 3s ease-in-out infinite",

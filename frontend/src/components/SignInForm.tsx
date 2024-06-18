@@ -1,6 +1,6 @@
 import { Form, redirect, useActionData } from "react-router-dom";
 import Input from "./Input";
-import { useEffect, useState } from "react";
+import SubmitButton from "./SubmitButton";
 
 type Data = {
   errors: Error[];
@@ -17,18 +17,9 @@ type Error = {
 export default function SignInForm() {
   const data = useActionData() as Data;
 
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (data) {
-      setIsSubmitting(false);
-    }
-  }, [data]);
-
   return (
     <Form
       method="post"
-      onSubmit={() => setIsSubmitting(true)}
       className="w-11/12 max-w-xl flex flex-col gap-6 mx-auto"
     >
       <Input
@@ -40,13 +31,7 @@ export default function SignInForm() {
 
       <Input label="Password" name="password" type="password" />
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="bg-c-300 w-full grid place-content-center text-c-200 uppercase font-black border-4 border-c-200 h-12"
-      >
-        Sign In
-      </button>
+      <SubmitButton>Sign In</SubmitButton>
       <ul className="text-red-500 text-center font-black">
         {data &&
           data.errors.map((error) => <li key={error.msg}>{error.msg}</li>)}
@@ -55,7 +40,7 @@ export default function SignInForm() {
   );
 }
 
-export const action = async ({ params, request }) => {
+export const action = async ({ request }: { request: Request }) => {
   const formData = await request.formData();
 
   const data = {
