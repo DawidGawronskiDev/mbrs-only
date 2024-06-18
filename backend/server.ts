@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import passport from "./config/passport";
 import session from "express-session";
+import cors from "cors";
 
 import authRoutes from "./routes/authRoutes";
 import mongoose from "mongoose";
@@ -13,6 +14,8 @@ mongoose.connect(process.env.MONGO_URI!);
 
 const app: Express = express();
 const port = process.env.PORT || 3001;
+
+app.use(cors({ origin: "*" }));
 
 app.use(
   session({
