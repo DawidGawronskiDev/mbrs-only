@@ -4,7 +4,7 @@ import Navigation from "./Navigation";
 
 export default function Header() {
   return (
-    <header className="fixed w-full">
+    <header className="fixed w-full top-0">
       <Container>
         <div className="flex items-center justify-between py-6">
           <h2 className="text-4xl uppercase font-black text-c-200">

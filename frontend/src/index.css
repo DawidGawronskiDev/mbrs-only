@@ -9,7 +9,6 @@
   --c-200: #36322c;
   --c-300: #a8ab9d;
 }
-
 @layer base {
   body {
     font-family: "Darker Grotesque", sans-serif;

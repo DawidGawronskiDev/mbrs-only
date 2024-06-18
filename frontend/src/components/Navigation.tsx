@@ -8,6 +8,9 @@ export default function Navigation() {
           <Link to="/">Sign In</Link>
         </li>
         <li>
+          <Link to="/signup">Sign Up</Link>
+        </li>
+        <li>
           <Link to="/">Log Out</Link>
         </li>
         <li>
