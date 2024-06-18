@@ -14,7 +14,7 @@ type Error = {
   value: string;
 };
 
-export default function SignUpForm() {
+export default function SignInForm() {
   const data = useActionData() as Data;
 
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -38,13 +38,6 @@ export default function SignUpForm() {
         placeholder="John Doe"
       />
 
-      <Input
-        label="Email"
-        name="email"
-        type="email"
-        placeholder="johndoe@gmail.com"
-      />
-
       <Input label="Password" name="password" type="password" />
 
       <button
@@ -52,7 +45,7 @@ export default function SignUpForm() {
         disabled={isSubmitting}
         className="bg-c-300 w-full grid place-content-center text-c-200 uppercase font-black border-4 border-c-200 h-12"
       >
-        Sign Up
+        Sign In
       </button>
       <ul className="text-red-500 text-center font-black">
         {data &&
@@ -67,13 +60,12 @@ export const action = async ({ params, request }) => {
 
   const data = {
     username: formData.get("username"),
-    email: formData.get("email"),
     password: formData.get("password"),
   };
 
   console.log(data);
 
-  const response = await fetch("http://localhost:3002/auth/signup", {
+  const response = await fetch("http://localhost:3002/auth/signin", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -85,5 +77,10 @@ export const action = async ({ params, request }) => {
     return response;
   }
 
-  return redirect("/signin");
+  const responseData = await response.json();
+
+  localStorage.setItem("user", responseData.user);
+  localStorage.setItem("token", responseData.token);
+
+  return redirect("/messages");
 };

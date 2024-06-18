@@ -4,6 +4,8 @@ import MainPage from "../pages/Main";
 import MessagesPage from "../pages/Messages";
 import SignUp from "../pages/SignUp";
 import { action as signUpAction } from "./SignUpForm";
+import SignIn from "../pages/SignIn";
+import { action as SignInAction } from "./SignInForm";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,11 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <SignUp />,
         action: signUpAction,
+      },
+      {
+        path: "signin",
+        element: <SignIn />,
+        action: SignInAction,
       },
     ],
   },

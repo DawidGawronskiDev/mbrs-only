@@ -5,13 +5,13 @@ export default function Navigation() {
     <nav>
       <ul className="flex items-center gap-8">
         <li>
-          <Link to="/">Sign In</Link>
+          <Link to="/signin">Sign In</Link>
         </li>
         <li>
           <Link to="/signup">Sign Up</Link>
         </li>
         <li>
-          <Link to="/">Log Out</Link>
+          <Link to="/logout">Log Out</Link>
         </li>
         <li>
           <Link to="/messages">See Messages</Link>

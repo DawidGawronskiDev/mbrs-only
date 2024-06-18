@@ -58,7 +58,7 @@ export const signUp = [
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      res.status(400).json(errors);
+      res.status(400).json({ errors: errors.array() });
     }
 
     const connection = await mongoose.connect(process.env.MONGO_URI!);

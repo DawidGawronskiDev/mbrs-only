@@ -25,6 +25,8 @@ app.use(
   })
 );
 app.use(passport.session());
+
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req: Request, res: Response) => {
