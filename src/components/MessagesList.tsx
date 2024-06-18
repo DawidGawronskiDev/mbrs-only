@@ -26,7 +26,7 @@ export default function MessagesList() {
   const messages: Message[] = dummyMessages;
 
   return (
-    <ul className="grid grid-cols-2 gap-8">
+    <ul className="grid md:grid-cols-2 gap-8">
       {messages.length &&
         messages.map((message) => <Item key={message.id} message={message} />)}
     </ul>
@@ -40,7 +40,7 @@ function Item({
 }) {
   return (
     <li className="bg-c-300">
-      <div className="relative p-4 border border-c-200">
+      <div className="relative p-4 border border-c-200 h-full">
         <div className="absolute w-full h-full bg-c-200 top-0 left-0 -rotate-2 -z-10"></div>
         <h4 className="text-2xl font-black">{message.name}</h4>
         <p>{message.message}</p>
