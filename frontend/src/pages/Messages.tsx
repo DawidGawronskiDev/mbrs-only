@@ -2,8 +2,40 @@ import { Fragment } from "react/jsx-runtime";
 import Container from "../components/Container";
 import IconShine from "../ui/icons/IconShine";
 import MessagesList from "../components/MessagesList";
+import { useLoaderData } from "react-router-dom";
+import { getAuthToken } from "../util/auth";
+
+export interface IMessage {
+  _id: string;
+  content: string;
+  author?: string;
+}
+
+export async function loader() {
+  const token = getAuthToken();
+  const response = await fetch("http://localhost:3002/messages", {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
+
+  console.log(response);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch messages");
+  }
+
+  const data = await response.json();
+
+  return data.messages;
+}
 
 export default function MessagesPage() {
+  const messages = useLoaderData() as IMessage[];
+
+  console.log(messages);
+
   return (
     <Fragment>
       <div className="flex items-start mt-8">
@@ -23,7 +55,7 @@ export default function MessagesPage() {
         </Container>
       </div>
       <Container>
-        <MessagesList />
+        <MessagesList messages={messages} />
       </Container>
     </Fragment>
   );

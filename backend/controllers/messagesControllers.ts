@@ -23,7 +23,9 @@ export const getMessages = asyncHandler(
         return;
       }
 
-      const messages = await Message.find({});
+      const messages = await Message.find({})
+        .populate("author", "username")
+        .select("content author _id");
 
       if (!messages) {
         res.status(400).json({ message: "Failed to fetch messagess" });
@@ -40,9 +42,12 @@ export const getMessages = asyncHandler(
         });
       }
 
+      connection.disconnect();
+
       res.status(200).json({
         messages: existingUser.isMember ? messages : encryptedMessages,
       });
+      return;
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Internal server error" });

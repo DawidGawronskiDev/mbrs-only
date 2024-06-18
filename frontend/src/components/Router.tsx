@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "../pages/Root";
 import MainPage from "../pages/Main";
-import MessagesPage from "../pages/Messages";
+import MessagesPage, { loader as messagesLoader } from "../pages/Messages";
 import SignUp from "../pages/SignUp";
 import { action as signUpAction } from "./SignUpForm";
 import SignIn from "../pages/SignIn";
@@ -20,6 +20,7 @@ const router = createBrowserRouter([
       {
         path: "/messages",
         element: <MessagesPage />,
+        loader: messagesLoader,
       },
       {
         path: "/signup",
