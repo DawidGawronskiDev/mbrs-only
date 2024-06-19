@@ -1,11 +1,12 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "../pages/Root";
 import MainPage from "../pages/Main";
-import MessagesPage, { loader as messagesLoader } from "../pages/Messages";
+import MessagesPage from "../pages/Messages";
 import SignUp from "../pages/SignUp";
 import { action as signUpAction } from "./SignUpForm";
 import SignIn from "../pages/SignIn";
 import { action as SignInAction } from "./SignInForm";
+import { loader as messagesLoader } from "../loaders/messagesLoader";
 
 const router = createBrowserRouter([
   {

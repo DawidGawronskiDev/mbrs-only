@@ -1,10 +1,9 @@
 import { IMessage } from "../pages/Messages";
 
 export default function MessagesList({ messages }: { messages: IMessage[] }) {
-  console.log(messages);
   return (
     <ul className="grid md:grid-cols-2 gap-8">
-      {messages &&
+      {Array.isArray(messages) &&
         messages.map((message) => <Item key={message._id} message={message} />)}
     </ul>
   );

@@ -18,11 +18,6 @@ export const getMessages = asyncHandler(
       const userId = req.token?.userId;
       const existingUser = await User.findById(userId);
 
-      if (!existingUser) {
-        res.status(400).json({ message: "User does not exists" });
-        return;
-      }
-
       const messages = await Message.find({})
         .populate("author", "username")
         .select("content author _id");
@@ -33,7 +28,7 @@ export const getMessages = asyncHandler(
       }
 
       let encryptedMessages: IMessage[] = [];
-      if (!existingUser.isMember) {
+      if (!existingUser || !existingUser.isMember) {
         encryptedMessages = messages.map((message: IMessage) => {
           const encryptedMessage = message;
           encryptedMessage.content = "Become a member to see message";
@@ -44,10 +39,13 @@ export const getMessages = asyncHandler(
 
       connection.disconnect();
 
-      res.status(200).json({
-        messages: existingUser.isMember ? messages : encryptedMessages,
-      });
-      return;
+      if (!existingUser || !existingUser.isMember) {
+        res.status(200).json({ messages });
+        return;
+      } else {
+        res.status(200).json({ encryptedMessages });
+        return;
+      }
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Internal server error" });
