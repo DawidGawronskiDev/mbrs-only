@@ -8,8 +8,6 @@ import { getAuthToken } from "../util/auth";
 export default function SecretPage() {
   const data = useActionData() as Data;
 
-  console.log(data);
-
   return (
     <div className="min-h-screen flex flex-col gap-4 items-center justify-center">
       <Wrapper>

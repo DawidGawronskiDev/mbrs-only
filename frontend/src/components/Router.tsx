@@ -10,6 +10,7 @@ import { loader as messagesLoader } from "../loaders/messagesLoader";
 import { action as logoutAction } from "../pages/Logout";
 import { checkAuthLoader, tokenLoader } from "../util/auth";
 import SecretPage, { action as secretAction } from "../pages/Secret";
+import MessagePage, { action as messageAction } from "../pages/Message";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
         path: "messages",
         element: <MessagesPage />,
         loader: messagesLoader,
+      },
+      {
+        path: "message",
+        element: <MessagePage />,
+        action: messageAction,
       },
       {
         path: "signup",

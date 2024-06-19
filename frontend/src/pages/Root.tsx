@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { Fragment } from "react/jsx-runtime";
 import { useEffect } from "react";
 import { getTokenDuration } from "../util/auth";
+// import MessageModal from "../components/MessageModal";
 
 export default function RootLayout() {
   const token = useLoaderData();
@@ -32,6 +33,7 @@ export default function RootLayout() {
       <main>
         <Outlet />
       </main>
+      {/* <MessageModal /> */}
     </Fragment>
   );
 }

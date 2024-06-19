@@ -2,7 +2,7 @@ import { Fragment } from "react/jsx-runtime";
 import Container from "../components/Container";
 import IconShine from "../ui/icons/IconShine";
 import MessagesList from "../components/MessagesList";
-import { Await, useLoaderData } from "react-router-dom";
+import { Await, Link, useLoaderData } from "react-router-dom";
 import { Suspense } from "react";
 
 export interface IMessage {
@@ -31,9 +31,11 @@ export default function MessagesPage() {
               <h3 className="text-[96px] sm:text-[128px] md:text-[256px] uppercase font-black leading-none text-c-200">
                 Msgs
               </h3>
-              <button className="absolute bg-c-200 border border-c-100 px-1 md:px-2 lg:px-4 py-0.5 md:py-1 lg:py-2 rounded-full font-black uppercase md:text-2xl lg:text-2xl bottom-0 right-0 -rotate-12">
-                Write a message
-              </button>
+              <Link to={"/message"}>
+                <button className="absolute bg-c-200 border border-c-100 px-1 md:px-2 lg:px-4 py-0.5 md:py-1 lg:py-2 rounded-full font-black uppercase md:text-2xl lg:text-2xl bottom-0 right-0 -rotate-12">
+                  Write a message
+                </button>
+              </Link>
             </div>
           </div>
         </Container>

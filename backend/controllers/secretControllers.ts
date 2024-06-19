@@ -16,9 +16,12 @@ const postKeyValidation = [
       }
     })
     .custom(async (value, { req }) => {
+      const connection = await mongoose.connect(process.env.MONGO_URI!);
       const userId = req.token!.userId;
 
       const existingUser = await User.findById(userId);
+
+      connection.disconnect();
 
       if (existingUser && existingUser.isMember) {
         throw new Error("You are already a member");
