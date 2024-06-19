@@ -40,12 +40,12 @@ export const getMessages = asyncHandler(
       connection.disconnect();
 
       if (!existingUser || !existingUser.isMember) {
-        res.status(200).json({ messages });
-        return;
-      } else {
-        res.status(200).json({ encryptedMessages });
+        res.status(200).json({ messages: [...encryptedMessages] });
         return;
       }
+
+      res.status(200).json({ messages });
+      return;
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Internal server error" });

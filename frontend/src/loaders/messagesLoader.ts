@@ -2,11 +2,10 @@ import { defer } from "react-router-dom";
 import { getAuthToken } from "../util/auth";
 
 export async function loader() {
-  const token = getAuthToken();
   const messages = fetch("http://localhost:3002/messages", {
     method: "GET",
     headers: {
-      Authorization: "Bearer " + token,
+      Authorization: "Bearer " + getAuthToken(),
     },
   })
     .then((response) => {

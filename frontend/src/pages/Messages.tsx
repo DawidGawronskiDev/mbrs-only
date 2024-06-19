@@ -8,7 +8,10 @@ import { Suspense } from "react";
 export interface IMessage {
   _id: string;
   content: string;
-  author?: string;
+  author: {
+    _id: string;
+    username: string;
+  };
 }
 
 export default function MessagesPage() {
@@ -37,7 +40,7 @@ export default function MessagesPage() {
       <Container>
         <Suspense
           fallback={
-            <p className="text-white text-4xl uppercase font-bold text-center">
+            <p className="text-white text-4xl uppercase font-bold text-center animate-pulse">
               Loading...
             </p>
           }

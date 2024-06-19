@@ -67,5 +67,10 @@ export const action = async ({ request }: { request: Request }) => {
   localStorage.setItem("user", responseData.user);
   localStorage.setItem("token", responseData.token);
 
+  const expiration = new Date();
+  expiration.setHours(expiration.getHours() + 24);
+
+  localStorage.setItem("expiration", expiration.toISOString());
+
   return redirect("/messages");
 };
