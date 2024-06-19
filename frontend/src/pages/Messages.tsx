@@ -17,8 +17,6 @@ export interface IMessage {
 export default function MessagesPage() {
   const { messages } = useLoaderData() as { messages: IMessage[] };
 
-  console.log(messages);
-
   return (
     <Fragment>
       <div className="flex items-start mt-8">
@@ -33,6 +31,9 @@ export default function MessagesPage() {
               <h3 className="text-[96px] sm:text-[128px] md:text-[256px] uppercase font-black leading-none text-c-200">
                 Msgs
               </h3>
+              <button className="absolute bg-c-200 border border-c-100 px-1 md:px-2 lg:px-4 py-0.5 md:py-1 lg:py-2 rounded-full font-black uppercase md:text-2xl lg:text-2xl bottom-0 right-0 -rotate-12">
+                Write a message
+              </button>
             </div>
           </div>
         </Container>

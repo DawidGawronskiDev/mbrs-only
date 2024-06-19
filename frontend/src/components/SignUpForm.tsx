@@ -19,7 +19,7 @@ export default function SignUpForm() {
 
   return (
     <Form
-      method="post"
+      method="POST"
       className="w-11/12 max-w-xl flex flex-col gap-6 mx-auto"
     >
       <Input
@@ -55,8 +55,6 @@ export const action = async ({ params, request }) => {
     email: formData.get("email"),
     password: formData.get("password"),
   };
-
-  console.log(data);
 
   const response = await fetch("http://localhost:3002/auth/signup", {
     method: "POST",

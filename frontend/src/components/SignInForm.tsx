@@ -49,8 +49,6 @@ export const action = async ({ request }: { request: Request }) => {
     password: formData.get("password"),
   };
 
-  console.log(data);
-
   const response = await fetch("http://localhost:3002/auth/signin", {
     method: "POST",
     headers: {
