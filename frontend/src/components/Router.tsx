@@ -9,6 +9,7 @@ import { action as SignInAction } from "./SignInForm";
 import { loader as messagesLoader } from "../loaders/messagesLoader";
 import { action as logoutAction } from "../pages/Logout";
 import { checkAuthLoader, tokenLoader } from "../util/auth";
+import SecretPage, { action as secretAction } from "../pages/Secret";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
       {
         path: "logout",
         action: logoutAction,
+      },
+      {
+        path: "secret",
+        element: <SecretPage />,
+        action: secretAction,
       },
     ],
   },

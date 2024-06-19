@@ -6,9 +6,9 @@ import cors from "cors";
 
 import authRoutes from "./routes/authRoutes";
 import messageRoutes from "./routes/messagesRoutes";
+import secretRoutes from "./routes/secretRoutes";
 
 import mongoose from "mongoose";
-import verifyToken from "./middleware/verifyToken";
 
 dotenv.config();
 
@@ -37,8 +37,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/auth", authRoutes);
 app.use("/messages", messageRoutes);
-
-app.get("/test", verifyToken);
+app.use("/secret", secretRoutes);
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);

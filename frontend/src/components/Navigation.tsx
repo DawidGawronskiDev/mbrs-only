@@ -13,6 +13,9 @@ export default function Navigation() {
                 <button>Log Out</button>
               </Form>
             </li>
+            <li>
+              <Link to="/secret">Become a member</Link>
+            </li>
           </>
         ) : (
           <>

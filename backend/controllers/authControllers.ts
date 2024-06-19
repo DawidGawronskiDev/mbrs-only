@@ -29,7 +29,7 @@ const signUpValidation = [
   body("email")
     .trim()
     .notEmpty()
-    .withMessage("Field is required")
+    .withMessage("Emial must be provided")
     .isEmail()
     .withMessage("Field must be type of email")
     .custom(async (value) => {
@@ -47,7 +47,7 @@ const signUpValidation = [
   body("password")
     .trim()
     .notEmpty()
-    .withMessage("Field is required")
+    .withMessage("Password must be provided")
     .isLength({ min: 6 })
     .withMessage("Password must contain at least six letters"),
 ];

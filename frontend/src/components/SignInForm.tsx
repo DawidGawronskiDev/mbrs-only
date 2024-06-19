@@ -2,11 +2,12 @@ import { Form, redirect, useActionData } from "react-router-dom";
 import Input from "./Input";
 import SubmitButton from "./SubmitButton";
 
-type Data = {
+export type Data = {
   errors: Error[];
+  message?: string;
 };
 
-type Error = {
+export type Error = {
   location: string;
   msg: string;
   path: string;
